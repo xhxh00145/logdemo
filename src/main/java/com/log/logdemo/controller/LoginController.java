@@ -14,7 +14,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/jwt/")
 public class LoginController {
 
-    // 登录接口
+    /**
+     * 访问地址 http://localhost:8083/jwt/doLogin
+     * @return
+     */
     @RequestMapping("doLogin")
     public SaResult doLogin() {
         // 第1步，先登录上
@@ -25,7 +28,10 @@ public class LoginController {
         return SaResult.data(tokenInfo);
     }
 
-    // 查询登录状态
+    /**
+     * http://localhost:8083/jwt/doLogin
+     * @return
+     */
     @RequestMapping("isLogin")
     public SaResult isLogin() {
         System.out.println(StpUtil.getLoginId());
@@ -33,7 +39,7 @@ public class LoginController {
         return SaResult.ok("是否登录：" + StpUtil.isLogin());
     }
 
-    // 测试注销
+    // 测试注销 jwt无状态无效 token此时在客户端
     @RequestMapping("logout")
     public SaResult logout() {
         StpUtil.logout();
